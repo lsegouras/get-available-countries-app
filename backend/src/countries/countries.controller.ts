@@ -4,15 +4,15 @@ import { CountriesService } from './countries.service';
 @Controller('countries')
 export class CountriesController {
   // eslint-disable-next-line prettier/prettier
-  constructor(private readonly countriesService: CountriesService) {}
+  constructor(private readonly countryService: CountriesService) {}
 
-  @Get('available')
-  getAvailableCountries() {
-    return this.countriesService.getAvailableCountries();
+  @Get('available-countries')
+  async getAvailableCountries() {
+    return this.countryService.getAvailableCountries();
   }
 
-  @Get(':countryCode/info')
-  getCountryInfo(@Param('countryCode') countryCode: string) {
-    return this.countriesService.getCountryInfo(countryCode);
+  @Get('info/:countryCode')
+  async getCountryInfo(@Param('countryCode') countryCode: string) {
+    return this.countryService.getCountryInfo(countryCode);
   }
 }
